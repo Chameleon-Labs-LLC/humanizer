@@ -1,0 +1,33 @@
+# Environment and secrets
+.env
+.env.local
+*.key
+*.pem
+
+# Per-user DNA bibles (contain personal info)
+user_dna/*.md
+!user_dna/.gitkeep
+
+# Agent outputs
+outputs/
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+.venv/
+venv/
+.venv_linux/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+
+# OS
+.DS_Store
+Thumbs.db
