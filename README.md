@@ -4,6 +4,19 @@ A Managed Agent (Anthropic Claude API) that strips AI fingerprints from writing 
 
 Inspired by [Craig's NotebookLM + Gemini "AI Tell Eliminator"](https://www.notion.so/I-Built-This-NotebookLM-Gemini-Workflow-to-Destroy-AI-Fingerprints-335606421d12802da336fa1b41a04970). This project is the Claude + Managed Agents port, with per-user voice profiles served by a custom tool.
 
+## Two ways to use it
+
+**1. As a Claude Code skill — no Python, no API key.** The easiest path. Claude reads the guardrails and your voice profile directly and applies them, with no backend to run. Install from the marketplace:
+
+```
+/plugin marketplace add Chameleon-Labs-LLC/plugins
+/plugin install humanizer@chameleon-labs
+```
+
+Or copy the skill straight from this repo's [`skill/`](skill/) folder. See [`docs/GLOBAL_SKILL.md`](docs/GLOBAL_SKILL.md) for details.
+
+**2. As a hosted Managed Agent — Python + Anthropic API key.** For serving humanization to many users from your own app, with per-user voice profiles fetched by a custom tool. That's what the code in this repo does, and the rest of this README covers it.
+
 ## How it works
 
 Two reference documents drive every response:
@@ -40,14 +53,17 @@ The agent is a single persisted Anthropic [Managed Agent](https://platform.claud
 └────────────────────────────────────────────────────────────┘
 ```
 
-## Setup
+## Setup (Managed Agent backend)
+
+Only needed for option 2 above. The skill needs none of this.
 
 **Prerequisites:** Python 3.10+, an Anthropic API key.
 
 ```bash
-cd ~/code/agents/humanizer
-python3 -m venv .venv_linux
-source .venv_linux/bin/activate
+git clone https://github.com/Chameleon-Labs-LLC/humanizer.git
+cd humanizer
+python3 -m venv .venv
+source .venv/bin/activate
 pip install -r requirements.txt
 
 cp .env.example .env
@@ -109,8 +125,9 @@ This creates a new immutable agent version. New sessions pick it up automaticall
 ```
 humanizer/
 ├── README.md                   # this file
-├── requirements.txt
-├── .env.example                # copy to .env
+├── LICENSE                     # MIT
+├── requirements.txt            # Managed Agent only
+├── .env.example                # copy to .env (Managed Agent only)
 ├── .gitignore
 ├── writing_guardrails.md       # negative rules (same for all users)
 ├── dna_bible_template.md       # positive rules template (copy per user)
@@ -119,10 +136,14 @@ humanizer/
 ├── run.py                      # per-request runtime
 ├── user_dna/                   # per-user DNA bibles (gitignored)
 │   └── .gitkeep
+├── skill/                      # the no-Python Claude Code skill (option 1)
+│   ├── SKILL.md
+│   └── references/             # writing_guardrails.md + voice profile template
 └── docs/
     ├── ARCHITECTURE.md         # detailed design notes
     ├── CUSTOM_TOOL.md          # how get_user_dna works
-    └── OPERATIONS.md           # updating, versioning, cost notes
+    ├── OPERATIONS.md           # updating, versioning, cost notes
+    └── GLOBAL_SKILL.md         # how the skill maps to this repo
 ```
 
 ## Swapping the DNA backend
