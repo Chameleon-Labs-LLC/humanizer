@@ -139,7 +139,7 @@ Everything else stays the same.
 
 ## License
 
-Private. Internal ChameleonLabs / Chameleon-Labs-LLC use only.
+MIT. See [LICENSE](LICENSE). Copyright (c) 2026 Chameleon Labs LLC.
 
 ## Credits
 
