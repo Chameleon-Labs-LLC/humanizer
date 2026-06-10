@@ -59,3 +59,21 @@ de-AI a marketing email), each run with-skill vs baseline (vanilla Claude).
   and use real greetings ("Hey," / "Hi," / "Good morning" — never "Hey there").
 
 Eval workspace: `~/.claude/skills/humanizer-workspace/iteration-1/`.
+
+## Public plugin onboarding (v0.2.0)
+
+The marketplace plugin (`humanizer@chameleon-labs`, in the
+`Chameleon-Labs-LLC/plugins` repo) ships a second skill, `humanizer-setup`
+(triggered by saying "set up humanizer"),
+that builds a new user's voice profile interactively: name from `git config`,
+writing samples imported with per-item consent (pasted text, selected disk
+files, selected sent emails), distilled into
+`~/.claude/humanizer/voice_profile.md`. That file lives outside the plugin
+cache so plugin updates never overwrite it; the bundled template is the
+fallback.
+
+That flow is for plugin users. Leland's personal skill at
+`~/.claude/skills/humanizer/` keeps its own sync procedure (see "Keeping the
+voice profile in sync" above) and is unaffected.
+
+Design spec: `docs/superpowers/specs/2026-06-10-humanizer-onboarding-design.md`.

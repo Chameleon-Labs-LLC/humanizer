@@ -13,7 +13,7 @@ Inspired by [Craig's NotebookLM + Gemini "AI Tell Eliminator"](https://www.notio
 /plugin install humanizer@chameleon-labs
 ```
 
-Or copy the skill straight from this repo's [`skill/`](skill/) folder. See [`docs/GLOBAL_SKILL.md`](docs/GLOBAL_SKILL.md) for details.
+After installing, say **"set up humanizer"** — a guided setup builds your voice profile from your own writing (samples you paste, files you pick, or sent emails you select). Or copy the skill straight from this repo's [`skill/`](skill/) folder and fill in the template by hand. See [`docs/GLOBAL_SKILL.md`](docs/GLOBAL_SKILL.md) for details.
 
 **2. As a hosted Managed Agent — Python + Anthropic API key.** For serving humanization to many users from your own app, with per-user voice profiles fetched by a custom tool. That's what the code in this repo does, and the rest of this README covers it.
 

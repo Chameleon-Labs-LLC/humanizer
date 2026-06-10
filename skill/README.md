@@ -26,7 +26,19 @@ STARTER DEFAULT instead of a filled-in YOUR VERSION, it uses the default.
 
 ## Installing
 
-Copy the `skill/` contents into a skill directory and fill in your own voice:
+The easiest path is the marketplace plugin, which includes a guided setup
+(`humanizer-setup`) that builds your voice profile from your own writing and
+stores it update-safe in `~/.claude/humanizer/`:
+
+```
+/plugin marketplace add Chameleon-Labs-LLC/plugins
+/plugin install humanizer@chameleon-labs
+```
+
+Then say **"set up humanizer"**.
+
+Manual alternative: copy the `skill/` contents into a skill directory and fill
+in your own voice by hand:
 
 ```bash
 mkdir -p ~/.claude/skills/humanizer
