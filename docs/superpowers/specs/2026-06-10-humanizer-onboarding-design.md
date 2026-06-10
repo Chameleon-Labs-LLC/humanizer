@@ -73,8 +73,8 @@ samples", "add this to my voice profile", or following the main skill's nudge.
 
 **Flow:**
 
-1. **Name.** Read `git config user.name`; confirm it with the user. Ask only if
-   missing or wrong.
+1. **Name.** Read `git config user.name`; confirm it with the user. Use first name. 
+   Ask only if missing or wrong.
 2. **Create files.** `~/.claude/humanizer/voice_profile.md` from the bundled
    template, plus `~/.claude/humanizer/raw_samples/`. Stamp name + "Last updated".
 3. **Gather samples**, best-first:
