@@ -66,3 +66,19 @@ When everything else is right but the writing still feels off, it's almost alway
 ## Updating Leland's voice
 
 The DNA profile improves over time. If Leland reacts to a rewrite ("too stiff," "I'd never say 'leverage'," "that's exactly right"), that's signal — fold it into `references/leland_dna.md` so the next rewrite starts closer. The guardrails file rarely changes; the voice file is meant to.
+
+## Syncing from the project DNA
+
+The raw source material for the voice profile lives in the humanizer repo, not in this skill:
+
+- **Canonical raw DNA:** `user_dna/<user>.md` in the humanizer repo (for Leland: `/mnt/d/Documents/Code/GitHub/humanizer/user_dna/leland_dna.md`; the same repo is also at `/home/leland/code/GitHub/humanizer` if the mount path is unavailable). Bio, profile notes, and pasted writing samples — whatever gets dropped in there.
+- **Distilled profile:** `references/leland_dna.md` in this skill. This is what you actually write against.
+
+When Leland says he updated his DNA in the project, or asks to "sync my DNA" / "update the skill from my DNA":
+
+1. Read the raw file and compare against the "Last synced" stamp near the top of `references/leland_dna.md`.
+2. Distill anything new. Raw samples are *evidence of voice*, not text to copy — extract rhythm, vocabulary, and habits, and fold them into the matching numbered sections of the profile. Marketing-bio phrasing in the raw file is explicitly not a target (the profile's header explains why).
+3. Update the "Last synced" stamp with today's date.
+4. Mirror any SKILL.md changes to the repo's `skill/SKILL.md` so the open-source copy doesn't drift, and regenerate `~/.claude/skills/humanizer.skill` (a zip of the installed skill directory).
+
+The raw file only gains material — never edit it from the skill side. The distilled profile is the skill's working copy.

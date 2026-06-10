@@ -29,9 +29,17 @@ The skill is single-user (Leland's voice). The Managed Agent stays multi-user.
 
 ## Keeping the voice profile in sync
 
-`user_dna/leland_dna.md` (this repo, used by the Managed Agent) and
-`~/.claude/skills/humanizer/references/leland_dna.md` (the skill) hold the same
-voice profile and should be kept in sync when either is refined.
+`user_dna/leland_dna.md` (this repo, used by the Managed Agent) is the canonical
+**raw** DNA — bio, profile notes, and pasted writing samples. The skill's
+`references/leland_dna.md` is the **distilled** voice profile built from it.
+
+As of 2026-06-10 the skill carries the sync procedure itself (SKILL.md, "Syncing
+from the project DNA"). To use it, tell Claude Code "sync my DNA" (or that you
+updated your DNA in the project): it reads the raw file, distills anything new
+into the profile's numbered sections, and updates the profile's "Last synced"
+stamp. New material goes into the raw file in this repo; the skill never edits
+it, only reads from it. `skill/SKILL.md` in this repo mirrors the installed
+SKILL.md.
 
 Note: a DNA Bible describes *how* Leland writes, not biographical facts. The
 bottom "BACKGROUND" section of `user_dna/leland_dna.md` holds the bio as context
