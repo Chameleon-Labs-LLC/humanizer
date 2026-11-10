@@ -27,8 +27,8 @@ def fetch_user_dna(user_id: str) -> str:
     path = DNA_DIR / f"{user_id}.md"
     if not path.exists():
         # Fall back to the template's starter defaults so the agent still has a voice profile.
-        return (HERE / "dna_bible_template.md").read_text()
-    return path.read_text()
+        return (HERE / "dna_bible_template.md").read_text(encoding="utf-8")
+    return path.read_text(encoding="utf-8")
 
 
 def humanize(
