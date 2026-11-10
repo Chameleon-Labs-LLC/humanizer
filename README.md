@@ -83,7 +83,18 @@ cp dna_bible_template.md user_dna/user_123.md
 # edit user_dna/user_123.md — fill in the "YOUR VERSION" sections
 ```
 
+
 Users without a file fall back to the template's starter defaults.
+
+> **Encoding:** DNA files must be UTF-8. `run.py` reads them with `read_text(encoding="utf-8")`, so a profile saved in a legacy Windows codepage (Windows-1252) renders its smart quotes and accented characters as mojibake once it lands on disk. Convert before upgrading — there is no legacy-encoding option:
+>
+> ```bash
+> iconv -f WINDOWS-1252 -t UTF-8 user_dna/user_123.md > user_dna/user_123.utf8.md
+> ```
+>
+> ```powershell
+> $t = [IO.File]::ReadAllText('user_dna/user_123.md', [Text.Encoding]::GetEncoding(1252)); [IO.File]::WriteAllText('user_dna/user_123.utf8.md', $t, [Text.Encoding]::UTF8)
+> ```
 
 ## Usage
 
