@@ -24,7 +24,7 @@ def main() -> None:
     client = anthropic.Anthropic()
     agent_id = os.environ["HUMANIZER_AGENT_ID"]
 
-    guardrails = GUARDRAILS_PATH.read_text()
+    guardrails = GUARDRAILS_PATH.read_text(encoding="utf-8")
     system_prompt = build_system_prompt(guardrails)
 
     updated = client.beta.agents.update(

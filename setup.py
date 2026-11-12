@@ -41,7 +41,7 @@ When the user asks you to rewrite a document, use the file tools to operate on i
 def main() -> None:
     client = anthropic.Anthropic()
 
-    guardrails = GUARDRAILS_PATH.read_text()
+    guardrails = GUARDRAILS_PATH.read_text(encoding="utf-8")
     system_prompt = build_system_prompt(guardrails)
 
     print("Creating environment...")
